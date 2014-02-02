@@ -1,0 +1,387 @@
+@font-face {
+  font-family: 'Klinic Slab';
+  font-weight: 500;
+  font-style: normal;
+  src: url('klinicslabmedium.eot');
+  src: url('klinicslabmedium.eot?#iefix')            format('embedded-opentype'),
+       url('klinicslabmedium.woff')                  format('woff'),
+       url('klinicslabmedium.svg#klinic_slabmedium') format('svg');
+}
+
+
+/*
+===============================================================================
+   Normalization / Reset
+-------------------------------------------------------------------------------
+*/
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+pre,
+code {
+  display: block;
+  margin: 0;
+}
+
+
+/*
+===============================================================================
+   Typography
+-------------------------------------------------------------------------------
+*/
+
+body {
+  font-family: 'museo-sans', sans-serif;
+  font-size: 100%;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #657b83;
+  -webkit-font-kerning: normal;
+     -moz-font-feature-settings: 'frac', 'liga';
+  -webkit-font-feature-settings: 'frac', 'liga';
+          font-feature-settings: 'frac', 'liga';
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Klinic Slab';
+  font-weight: 400;
+}
+
+.title {
+  font-family: 'museo-slab';
+  font-weight: 700;
+}
+
+.alpha {
+  font-size: 5rem;
+  line-height: 1rem;
+}
+
+.beta {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.gamma {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+.delta {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.epsilon {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.zeta {
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 0.5rem;
+}
+
+.delta p + p {
+  margin-top: 1rem;
+}
+
+code {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.title > .delta {
+  padding-left: 0.5ex; /* A touch of optical alignment between H and C */
+}
+
+.title > .alpha {
+  line-height: 4rem;
+}
+
+.slogan,
+.summary {
+  font-weight: 500;
+  text-align: center;
+}
+
+.summary {
+  font-family: 'Klinic Slab';
+}
+
+.install,
+.credits {
+  text-align: center;
+}
+
+.blurb > h2,
+.install > h2 {
+  font-weight: 500;
+}
+
+.menu > a {
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@media all and (max-width: 800px) {
+  .blurb > h2 {
+    text-align: center;
+  }
+}
+
+
+/*
+===============================================================================
+    Color
+-------------------------------------------------------------------------------
+*/
+
+a {
+  color: #93a1a1;
+}
+
+.base-bg {
+  background-color: #fdf6e3;
+}
+
+.base-copy {
+  color: #657b83;
+}
+
+.darker {
+  color: #586e75;
+}
+
+.lighter {
+  color: #93a1a1;
+}
+
+.ale {
+  color: #b58900;
+}
+
+.highlight-bg {
+  background-color: #eee8d5;
+}
+
+.cyan {
+  color: #2aa198;
+}
+
+code {
+  color: #839496;
+}
+
+.sh {
+  background-color: #073642;
+}
+
+
+/*
+===============================================================================
+    Layout
+-------------------------------------------------------------------------------
+*/
+
+.spacing {
+  margin-top: 1.5rem;
+}
+
+body > .spacing:first-child {
+  margin-top: 0.75rem;
+}
+
+body > .spacing:last-child {
+  margin-top: 3rem;
+}
+
+.column-main {
+  max-width: 60rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.column-secondary {
+  max-width: 40rem;
+}
+
+.title-wrap {
+  display: -webkit-flex;
+  display:         flex;
+
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+header > h1 {
+  display: inline-block;
+}
+
+.slogan {
+  padding-bottom: 0.125rem;
+}
+
+.intro {
+  margin-top: 1.5rem;
+}
+
+.summary {
+  max-width: 86ex;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.overview {
+  margin-top: 4.5rem;
+}
+
+section {
+  margin: 3rem auto;
+}
+
+.flex-column {
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+}
+
+.blurb,
+.sh {
+  width: 48%;
+}
+
+.sh {
+  padding: 1rem;
+}
+
+.install {
+  padding: 1.5rem 0 3rem 0;
+}
+
+.install > .sh {
+  width: 80ex;
+  margin: 0.5rem auto 0 auto;
+}
+
+.menu {
+  display: -webkit-flex;
+  display:         flex;
+  margin: 3rem auto;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+  -webkit-align-content: center;
+          align-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+
+.menu > a {
+  display: block;
+}
+
+.menu > .textual {
+  line-height: 3rem;
+  width: 6rem;
+  height: 3rem;
+}
+
+.octocat {
+  width: 4.5rem;
+}
+
+.credits {
+  padding: 0.75rem;
+  border-top: 2px solid #eee8d5;
+}
+
+
+@media all and (max-width: 1024px) {
+  .column-main {
+    max-width: 92%;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .flex-column {
+    flex-wrap: wrap;
+  }
+
+  .sh,
+  .blurb {
+    flex-basis: 100%;
+  }
+
+  .blurb {
+    margin-top: 0.5rem;
+  }
+
+  .install > .sh {
+    max-width: 92%;
+  }
+}
+
+
+/*
+===============================================================================
+    Fancification
+-------------------------------------------------------------------------------
+*/
+
+.sh,
+.intro,
+.install,
+.menu > .textual {
+  border-radius: 2px;
+}
+
+.menu > a {
+  transition: all 0.4s;
+}
+
+.menu > .textual {
+  border: 1px solid #eee8d5;
+}
+
+.github {
+  border-radius: 50%;
+}
+
+.menu > a:hover {
+  color: #fdf6e3;
+  background-color: #eee8d5;
+}
