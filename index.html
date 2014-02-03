@@ -1,12 +1,111 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <script>
-      window.location.replace("https://github.com/phinze/homebrew-cask");
-    </script>
-    <!-- <meta http-equiv="refresh" content="0;URL=https://github.com/phinze/homebrew-cask"> -->
-  </head>
-  <body>
-    <p>Redirecting to <a href="https://github.com/phinze/homebrew-cask">project page</a>...</p>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homebrew Cask</title>
+    <link rel="stylesheet" href="cask.css">
+    <script type="text/javascript" src="//use.typekit.net/ghx0nzu.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body class="base-bg base-copy">
+    
+    <header class="spacing">
+        <div class="title-wrap">
+            <h1 class="title ale">
+                <span class="delta">Homebrew</span><br>
+                <span class="alpha">Cask</span>
+            </h1>
+        </div>
+        <h2 class="slogan spacing gamma darker">The missing app manager for OSX.</h2>
+    </header>
+    
+    <div class="intro column-main highlight-bg">        
+        <div class="summary delta">
+            <p>Homebrew Cask extends Homebrew and brings its elegance, simplicity, and speed to OSX applications and large binaries alike.</p>
+            <p>It only takes <span class="cyan">1 line</span> in your shell 
+            to reach <span class="n-cask cyan">1105 Casks</span> 
+            contributed by over <span class="n-contrib cyan">400 people</span>.</p>
+        </div>
+    </div>
+    
+    <div class="overview">
+        <section class="column-main">
+            <div class="flex-column">
+                <div class="sh">
+                    <pre><code class="epsilon">$ brew cask install google-chrome</code></pre>
+                </div>
+                <div class="blurb epsilon">
+                    <h2 class="gamma ale">Install with ease</h2>
+                    <p>Your software is just one command away from being ready and raring to go.</p>
+                    <p>Forget the ugliness of babysitting the install process step by step, from website to cleanup.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="column-main">
+            <div class="flex-column">
+                <div class="sh">
+                    <pre><code class="epsilon">$ ls /opt/homebrew-cask/Caskroom<br>google-chrome<br></code></pre>
+                </div>
+                <div class="blurb epsilon">
+                    <h2 class="gamma ale">Unix-savvy, OSX-friendly</h2>
+                    <p>Cask does one thing, it does it well, and it plays nice with others. Apps are kept in their Caskroom under /opt and symlinked to your Applications folder.</p>
+                    <p>Or wherever you may like: Cask is fully configurable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="column-main">
+            <div class="flex-column">
+                <div class="sh">
+                    <pre><code class="epsilon"># BREWFILE<br>tap phinze/cask<br>install brew-cask<br>cask install virtualbox<br>cask install vagrant<br>...</code></pre>
+                </div>
+                <div class="blurb epsilon">
+                    <h2 class="gamma ale">Automate away</h2>
+                    <p>Deployments are a breeze with dotfiles, but they only cover those things that can be built from source.</p>
+                    <p>With Cask, provisioning your apps is just the same: bootstrap your Brewfile and let the machine do the work for you.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="column-main">
+            <div class="flex-column">
+                <div class="sh">
+                    <pre><code class="epsilon">$ brew cask create my-cask<br></code></pre>
+                </div>
+                <div class="blurb epsilon">
+                    <h2 class="gamma ale">Community-driven</h2>
+                    <p>Creating new casks is only a matter of minutes; updating them, of seconds!</p>
+                    <p>And if you feel like improving Cask itself, dive into the codebase and you'll find yourself right at home:
+                       Cask is all git and Ruby, just like Homebrew.</p>
+                </div>
+            </div>
+        </section>
+     
+    </div>
+        
+    <div class="install column-main spacing highlight-bg">
+       <h2 class="beta ale">Get Cask</h2>
+        <div class="sh">
+            <pre><code>$ brew tap phinze/homebrew-cask<br>$ brew install brew-cask</code></pre>
+        </div>
+    </div>
+        
+    <div class="menu column-secondary">
+        <a href="/" class="textual">docs</a>
+        <a href="//github.com/phinze/homebrew-cask" class="github">
+            <img src="octocat.svg" class="octocat" alt="Octocat purrs and points its tentacles to the source">
+        </a>
+        <a href="/" class="textual">search</a>
+    </div>
+        
+    <footer class="spacing">
+        <div class="credits column-main zeta lighter">
+            Ideated by [ideators].
+            Mantained by [mantainers].
+            Website courtesy of [contributor]
+        </div>
+    </footer>
+        
+</body>
 </html>
