@@ -115,7 +115,8 @@ p + p {
 }
 
 code {
-  font-size: 1rem;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 16px;
   text-align: left;
 }
 
