@@ -287,6 +287,8 @@ section {
 
 .sh {
   padding: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.2rem;
 }
 
 .install {
@@ -356,6 +358,7 @@ section {
   .flex-column > .sh {
     order: 2;
     margin-top: 1rem;
+    margin-bottom: 0;
   }
 
   .blurb {
