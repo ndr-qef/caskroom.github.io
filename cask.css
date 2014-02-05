@@ -337,6 +337,13 @@ section {
 }
 
 @media all and (max-width: 800px) {
+  .overview {
+    margin-top: 3rem;
+  }
+  section {
+    margin: 1.5rem auto;
+  }
+  
   .flex-column {
     flex-wrap: wrap;
   }
@@ -345,9 +352,19 @@ section {
   .blurb {
     flex-basis: 100%;
   }
+  
+  .flex-column > .sh {
+    order: 2;
+    margin-top: 1rem;
+  }
 
   .blurb {
     margin-top: 0.5rem;
+    order: 1;
+  }
+  
+  .install {
+    margin-top: 3rem;
   }
 
   .install > .sh {
