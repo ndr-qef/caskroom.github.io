@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Homebrew Cask</title>
     <link rel="stylesheet" href="cask.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="//use.typekit.net/ghx0nzu.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
@@ -23,8 +24,8 @@
         <div class="summary delta">
             <p>Homebrew Cask extends <a href="http://brew.sh">Homebrew</a> and brings its elegance, simplicity, and speed to OS X applications and large binaries alike.</p>
             <p>It only takes <span class="cyan">1 line</span> in your shell
-            to reach <span class="n-cask cyan">1105 Casks</span>
-            contributed by over <span class="n-contrib cyan">400 people</span>.</p>
+            to reach <span class="n-cask cyan"><span id="casks">1050</span> Casks</span>
+            contributed by <span class="n-contrib cyan"><span id="contributors">400</span> people</span>.</p>
         </div>
     </div>
 
@@ -106,6 +107,26 @@
             Website courtesy of <a href="https://github.com/ndr-qef">@ndr-qef</a>.
         </div>
     </footer>
+
+    <script>
+        function request(url, spanId) {
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(data) {
+                    $('#' + spanId).fadeOut(250, function() {
+                        $(this).text(data.length.toString()).fadeIn(250);
+                    });
+                }
+            });
+        }
+
+        request("https://api.github.com/repos/phinze/homebrew-cask/contents/Casks",
+                "casks");
+        
+        request("https://api.github.com/repos/phinze/homebrew-cask/contributors",
+                "contributors");
+    </script>
 
 </body>
 </html>
