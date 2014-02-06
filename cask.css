@@ -2,10 +2,7 @@
   font-family: 'Klinic Slab';
   font-weight: 500;
   font-style: normal;
-  src: url('klinicslabmedium.eot');
-  src: url('klinicslabmedium.eot?#iefix')            format('embedded-opentype'),
-       url('klinicslabmedium.woff')                  format('woff'),
-       url('klinicslabmedium.svg#klinic_slabmedium') format('svg');
+  src: url('klinicslabmedium.woff') format('woff'),
 }
 
 
@@ -342,6 +339,7 @@ section {
   .overview {
     margin-top: 3rem;
   }
+  
   section {
     margin: 1.5rem auto;
   }
