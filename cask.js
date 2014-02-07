@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-  request("https://api.github.com/repos/phinze/homebrew-cask/contents/Casks",
+    request("https://api.github.com/repos/phinze/homebrew-cask/contents/Casks",
           "n-cask");
   
-  request("https://api.github.com/repos/phinze/homebrew-cask/contributors",
+    request("https://api.github.com/repos/phinze/homebrew-cask/contributors",
           "n-contrib");
 })
