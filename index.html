@@ -11,17 +11,20 @@
 
     <header class="spacing">
         <div class="title-wrap">
-            <h1 class="title ale">
-                <span class="delta">Homebrew</span><br>
-                <span class="alpha">Cask</span>
-            </h1>
+            <a href="/">
+                <h1 class="title ale">
+                    <span class="delta">Homebrew</span><br>
+                    <span class="alpha">Cask</span>
+                </h1>
+            </a>
         </div>
         <h2 class="slogan spacing gamma darker">&ldquo;To install, drag this icon&hellip;&rdquo; no more!</h2>
     </header>
-
+    
+    <div id="landing-page" class="">
     <div class="intro column-main highlight-bg">
         <div class="summary delta">
-            <p>Homebrew Cask extends <a href="http://brew.sh">Homebrew</a> and brings its elegance, simplicity, and speed to OS X applications and large binaries alike.</p>
+            <p>Homebrew Cask extends <a href="http://brew.sh">Homebrew</a> and brings its elegance, simplicity, and speed to OS X applications and large                     binaries alike.</p>
             <p>It only takes <span class="cyan">1 line</span> in your shell
             to reach <span class="cyan"><span id="n-cask">1050</span> casks</span>
             contributed by <span class="cyan"><span id="n-contrib">400</span> people</span>.</p>
@@ -49,7 +52,7 @@
                 </div>
                 <div class="blurb epsilon">
                     <h2 class="gamma ale">Unix-savvy, OS X-friendly</h2>
-                    <p>Cask does one thing, it does it well, and it plays nice with others. Apps are kept in their Caskroom under /opt and symlinked to your ~/Applications folder.</p>
+                    <p>Cask does one thing, it does it well, and it plays nice with others. Apps are kept in their Caskroom under /opt and symlinked to your                         ~/Applications folder.</p>
                     <p>Or wherever you like: Cask is fully configurable.</p>
                 </div>
             </div>
@@ -62,7 +65,7 @@
                 </div>
                 <div class="blurb epsilon">
                     <h2 class="gamma ale">Automate away</h2>
-                    <p>Deployments are a breeze with <a href="http://dotfiles.github.io/">dotfiles</a>, but they only cover those things that can be built from source.</p>
+                    <p>Deployments are a breeze with <a href="http://dotfiles.github.io/">dotfiles</a>, but they only cover those things that can be built from                     source.</p>
                     <p>With Cask, provisioning your apps is just the same: bootstrap your Brewfile and let the machine do the work for you.</p>
                 </div>
             </div>
@@ -96,9 +99,22 @@
         <a href="//github.com/phinze/homebrew-cask" class="github">
             <img src="octocat.svg" class="octocat" alt="Octocat purrs and points its tentacles to the source">
         </a>
-        <a href="/" class="textual">search</a>
+        <a href="/search" id="search-button" class="textual">search</a>
+    </div>
     </div>
 
+    <div id="search-page" class="off-canvas">
+    <form class="search-bar column-main spacing">
+        <input type = "text" id = "search-input" placeholder = "cask name" autocomplete = "off" class = "delta highlight-bg">
+    </form>
+    
+    <div id="search-view" class="column-main flex-column">
+        <div class="search-item no-basis delta ale highlight-bg">
+            Search for an app.
+        </div>
+    </div>
+    </div>
+    
     <footer class="spacing">
         <div class="credits column-main zeta lighter">
             Created by <a href="https://github.com/phinze">@phinze</a>.
@@ -108,7 +124,22 @@
     </footer>
     
     
+    <script id="search-template" type="text/x-dot-template">
+        {{? it.length}}
+            {{~ it :item}}
+                <div class="search-item delta ale highlight-bg">
+                    {{=item.name}}
+                </div>
+            {{~}}
+        {{??}}
+            <div class="search-item no-basis delta highlight-bg">
+                No cask found. Why not <a href="https://github.com/phinze/homebrew-cask/blob/master/CONTRIBUTING.md">contribute one</a>?
+            </div>
+        {{?}}
+    </script> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="lunr.min.js"></script>
+    <script src="doT.min.js"></script>
     <script src="cask.js"></script>
 
 </body>
