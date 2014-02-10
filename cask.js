@@ -93,4 +93,12 @@ document.addEventListener("DOMContentLoaded", function() {
             $("#search-view").html(render(results));
         }
     }));
+  
+    $("#search-input").on("keyup keypress", function(e) {
+        var key = e.keyCode || e.which; 
+        if (key  === 13) {
+          e.preventDefault();
+          return false;
+        }
+    });
 });
