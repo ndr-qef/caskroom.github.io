@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         caskList = data.map(function(raw, i) {
             return {
                 id: i,
-                name: raw.name.substr(0, raw.name.lastIndexOf(".")) || raw.name
+                name: raw.name.replace(/-/g, " ").substr(0, raw.name.lastIndexOf(".")) || raw.name.replace(/-/g, " ")
             };
         });
         
