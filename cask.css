@@ -378,6 +378,7 @@ section {
 .search-item {
   margin-top: 1.5rem;
   padding: 1rem;
+  -webkit-flex-basis: 30%;
   flex-basis: 30%;
 }
 
@@ -388,12 +389,15 @@ section {
 .no-basis {
   margin-right: auto;
   margin-left: auto;
+  -webkit-flex-basis: auto;
   flex-basis: auto;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
 #search-view.flex-column {
-  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
 @media all and (max-width: 1024px) {
@@ -412,12 +416,14 @@ section {
   }
 
   .flex-column {
-    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 
   .sh,
   .blurb {
-    flex-basis: 100%;
+    -webkit-flex-basis: 100%;
+            flex-basis: 100%;
   }
 
   .flex-column > .sh {
