@@ -26,12 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
           "n-contrib");
     
     $("#search-button").on("click", function(e) {
-        $("#landing-page").toggleClass("off-canvas");
-        $("#search-page").toggleClass("off-canvas");
-        $("html, body").animate({ scrollTop: 0 }, "slow");
-        $("#search-input").focus();
         history.pushState(null, null, "/");
         historyCanary = true;
+        $("html, body").animate({ scrollTop: 0 }, 250).promise().done(function() {
+            $("#landing-page").toggleClass("off-canvas");
+            $("#search-page").toggleClass("off-canvas");
+        });
+        $("#search-input").focus();
         e.preventDefault();
     });
     

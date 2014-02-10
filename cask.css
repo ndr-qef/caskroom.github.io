@@ -368,6 +368,11 @@ section {
   position: absolute;
   width: 100%;
   margin-left: -100%;
+  top: 0;
+}
+
+.pages-wrap {
+  position: relative;
 }
 
 .search-item {
@@ -442,7 +447,8 @@ section {
 -------------------------------------------------------------------------------
 */
 
-.off-canvas {
+#search-page,
+#landing-page {
   transition: margin 0.5s;
 }
 
