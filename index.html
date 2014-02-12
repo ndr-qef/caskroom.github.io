@@ -131,6 +131,11 @@
             {{~ it :item}}
                 <div class="search-item delta ale highlight-bg">
                     {{=item.name}}
+                    <div class="command">
+                      <div class="sh">
+                        <code>$ brew cask install {{=item.rawName}}</code>
+                      </div>
+                    </div>
                 </div>
             {{~}}
         {{??}}
