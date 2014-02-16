@@ -71,10 +71,8 @@ body {
   font-weight: 500;
   line-height: 1.5;
   color: #657b83;
-
   -webkit-font-kerning: normal;
      -moz-font-feature-settings: 'frac', 'liga';
-  -webkit-font-feature-settings: 'frac', 'liga';
           font-feature-settings: 'frac', 'liga';
   text-rendering: optimizeLegibility;
 }
