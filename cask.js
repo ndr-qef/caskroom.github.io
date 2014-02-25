@@ -49,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     var index = lunr(function() {
         this.ref("id");
-        this.field("entryName", 10);
+        this.field("appName", 10);
+        this.field("entryName", 7)
         
         this.pipeline.remove(lunr.stemmer);
         this.pipeline.remove(lunr.stopWordFilter);
