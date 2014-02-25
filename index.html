@@ -130,10 +130,10 @@
         {{? it.length}}
             {{~ it :item}}
                 <div class="search-item delta ale highlight-bg">
-                    {{=item.name}}
+                    {{=item.appName}}
                     <div class="command">
                       <div class="sh">
-                        <code>$ brew cask install {{=item.rawName}}</code>
+                        <code>$ brew cask install {{=item.caskName}}</code>
                       </div>
                     </div>
                 </div>

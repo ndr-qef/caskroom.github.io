@@ -49,18 +49,23 @@ document.addEventListener("DOMContentLoaded", function() {
     
     var index = lunr(function() {
         this.ref("id");
-        this.field("name", 10);
+        this.field("entryName", 10);
+        
+        this.pipeline.remove(lunr.stemmer);
+        this.pipeline.remove(lunr.stopWordFilter);
     });
     
     var searchTemplate = $("#search-template").html(),
         render = doT.template(searchTemplate);
     
     var process = function process(data) {
-        caskList = data.map(function(raw, i) {
+        caskList = data.map(function(res, i) {
+            var raw = res.name.substr(0, res.name.lastIndexOf(".")) || res.name;
             return {
                 id: i,
-                name: raw.name.replace(/-/g, " ").substr(0, raw.name.lastIndexOf(".")) || raw.name.replace(/-/g, " "),
-                rawName: raw.name.replace(/[^A-Za-z0-9]/g, "").substr(0, raw.name.lastIndexOf(".")) || raw.name.replace(/[^A-Za-z0-9]/g, "")
+                caskName: raw,
+                appName: raw.replace(/-/g, " "),
+                entryName: raw.replace(/[^A-Za-z0-9]/g, "")
             };
         });
         
