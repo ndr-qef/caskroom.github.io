@@ -157,6 +157,10 @@ code {
   font-family: 'Klinic Slab';
 }
 
+.summary a {
+  text-decoration: none;
+}
+
 .install,
 .credits {
   text-align: center;
@@ -493,6 +497,7 @@ section {
 
 .menu > a:hover {
   background-color: #eee8d5;
+  color: #586e75;
 }
 
 input.highlight-bg {
