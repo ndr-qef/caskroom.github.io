@@ -51,11 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
         this.ref("id");
         this.field("appName", 10);
         this.field("entryName", 7)
-        
-        this.pipeline.remove(lunr.stemmer);
-        this.pipeline.remove(lunr.stopWordFilter);
     });
     
+   
     var searchTemplate = $("#search-template").html(),
         render = doT.template(searchTemplate);
     
@@ -66,13 +64,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 id: i,
                 caskName: raw,
                 appName: raw.replace(/-/g, " "),
-                entryName: raw.replace(/[^A-Za-z0-9]/g, "")
+                entryName: raw.replace(/[^A-Za-z0-9]/g, ""),
+                caskUrl: res.html_url
             };
         });
         
         caskList.forEach(function(item) {
             index.add(item);
         });
+        
+        console.log(index);
     };
     
     var debounce = function debounce(fn) {

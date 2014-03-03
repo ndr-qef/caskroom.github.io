@@ -183,6 +183,10 @@ code {
   text-align: center;
 }
 
+.cask-source {
+  text-align: left;
+}
+
 @media all and (max-width: 800px) {
   .blurb > h2 {
     text-align: center;
@@ -393,8 +397,13 @@ section {
   width: 100%;
 }
 
+.command > .cask-source {
+  float: left;
+  margin-left: 1rem;
+}
+
 .search-item:hover > .command {
-  max-height: 6rem;
+  max-height: 7.5rem;
 }
 
 #search-input {
