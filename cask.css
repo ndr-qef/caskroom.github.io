@@ -378,10 +378,9 @@ section {
 }
 
 .search-item {
+  width: 100%;
   margin-top: 1.5rem;
   padding: 1rem;
-  -webkit-flex-basis: 100%;
-          flex-basis: 100%;
 }
 
 .search-item > .command {
