@@ -72,8 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
         caskList.forEach(function(item) {
             index.add(item);
         });
-        
-        console.log(index);
     };
     
     var debounce = function debounce(fn) {
