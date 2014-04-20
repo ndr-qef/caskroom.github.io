@@ -3,27 +3,43 @@ document.addEventListener("DOMContentLoaded", function() {
     var initialUrl = location.href,
         historyCanary = false;
     
-    var caskList;
+    /* Cask data */
     
-    var request = function request(url, spanId) {
+    var caskList,
+        caskSpanId = "n-cask",
+        contribSpanId = "n-contrib";
+    
+    var contribHandler = function contribHandler(data, textStatus, jqXHR) {
+        var links = jqXHR.getResponseHeader("Link");
+        var pageCount = links.match(/&page=(\d+)>; rel="last"/).pop();
+        
+        $("#" + contribSpanId).fadeOut(250, function() {
+            $(this).text(pageCount).fadeIn(250);
+        });
+    }
+    
+    var caskHandler = function caskHandler(data) {
+        $("#" + caskSpanId).fadeOut(250, function() {
+            $(this).text(data.length.toString()).fadeIn(250);
+        });
+      
+        process(data);
+    }
+    
+    var request = function request(url, handler) {
         $.ajax({
             url: url,
             type: "GET",
-            success: function(data) {
-                $("#" + spanId).fadeOut(250, function() {
-                    $(this).text(data.length.toString()).fadeIn(250);
-                });
-                
-                if (spanId === "n-cask") { process(data); }
+            success: function(data, textStatus, jqXHR) {
+              handler(data, textStatus, jqXHR);
             }
         });
     }
 
-    request("https://api.github.com/repos/phinze/homebrew-cask/contents/Casks",
-          "n-cask");
-  
-    request("https://api.github.com/repos/phinze/homebrew-cask/contributors",
-          "n-contrib");
+    request("https://api.github.com/repos/phinze/homebrew-cask/contents/Casks", caskHandler);
+    request("https://api.github.com/repos/phinze/homebrew-cask/contributors?per_page=1", contribHandler);
+    
+    
     
     $("#search-button").on("click", function(e) {
         history.pushState(null, null, "/");
