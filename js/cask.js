@@ -57,26 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     /* Search */
     
-    $("#search-button").on("click", function(e) {
-        history.pushState(null, null, "/");
-        historyCanary = true;
-        $("html, body").animate({ scrollTop: 0 }, 250).promise().done(function() {
-            $("#landing-page").toggleClass("off-canvas");
-            $("#search-page").toggleClass("off-canvas");
-        });
-        $("#search-input").focus();
-        e.preventDefault();
-    });
-    
-    var index = lunr(function() {
-        this.ref("id");
-        this.field("appName", 10);
-        this.field("entryName", 7)
-    });
-   
-    var searchTemplate = $("#search-template").html(),
-        render = doT.template(searchTemplate);
-    
     var process = function process(data) {
         caskList = data.map(function(res, i) {
             var raw = res.name.substr(0, res.name.lastIndexOf(".")) || res.name;
@@ -88,11 +68,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 caskUrl: res.html_url
             };
         });
-        
-        caskList.forEach(function(item) {
-            index.add(item);
-        });
     };
+    
+    var searchTemplate = $("#search-template").html(),
+        render = doT.template(searchTemplate);
     
     var debounce = function debounce(fn) {
         var timeout;
@@ -107,16 +86,30 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 200);
         };
     };
+    
+    $("#search-button").on("click", function(e) {
+        history.pushState(null, null, "/");
+        historyCanary = true;
+        $("html, body").animate({ scrollTop: 0 }, 250).promise().done(function() {
+            $("#landing-page").toggleClass("off-canvas");
+            $("#search-page").toggleClass("off-canvas");
+        });
+        
+        $("#search-input").focus();
+        e.preventDefault();
+    });
 
     $("#search-input").on("keyup", debounce(function() {
         if ($(this).val() < 1) {
             $("#search-view").html("<div class=\"search-item no-basis delta ale highlight-bg\">Search for an app.</div>");    
         } else {
-            var query = $(this).val().replace(/[^A-Za-z0-9]/g, ""),
-                results = index.search(query).map(function(result) {
-                return caskList.filter(function(q) { return q.id === parseInt(result.ref, 10) })[0]
-            });
+            var inputValue = $(this).val().replace(/[^A-Za-z0-9]/g, ""),
+                regexp = new RegExp(inputValue);
 
+            var results = caskList.filter(function(el) {
+              return regexp.test(el.entryName);  
+            })
+            
             $("#search-view").html(render(results));
         }
     }));
