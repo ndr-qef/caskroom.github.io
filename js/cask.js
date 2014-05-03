@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         $("#" + caskSpanId).fadeOut(250, function() {
             $(this).text(data.length.toString()).fadeIn(250);
         });
-      
+
         process(data);
     }
     
@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    request("https://api.github.com/repos/phinze/homebrew-cask/contents/Casks", caskHandler);
-    request("https://api.github.com/repos/phinze/homebrew-cask/contributors?per_page=1", contribHandler);
+    request("https://api.github.com/repos/caskroom/homebrew-cask/contents/Casks", caskHandler);
+    request("https://api.github.com/repos/caskroom/homebrew-cask/contributors?per_page=1", contribHandler);
     
     
     /* Search */
