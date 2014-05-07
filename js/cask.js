@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     $("#search-input").on("keyup", debounce(function() {
         if ($(this).val() < 1) {
-            $("#search-view").html("<div class=\"search-item no-basis delta ale highlight-bg\">Search for an app.</div>");    
+            $("#search-view").html("<div class=\"search-item no-basis delta ale highlight-bg\">Type to start searching.</div>");
         } else {
             var inputValue = $(this).val().replace(/[^A-Za-z0-9]/g, ""),
                 regexp = new RegExp(inputValue);
