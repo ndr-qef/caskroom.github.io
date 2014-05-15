@@ -61,7 +61,6 @@ input::-moz-focus-inner {
   font-family: 'Klinic Slab';
   font-weight: 500;
   font-style: normal;
-
   src: url('/assets/klinicslabmedium.woff') format('woff');
 }
 
