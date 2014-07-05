@@ -12,6 +12,3 @@ To run the site locally:
 The current codebase is not specific to jekyll. You can test it with your live-reload tool of choice, or simply host it with a Python server:  
 `python -m SimpleHTTPServer` (Python 2)  
 `python -m http.server` (Python 3)
-
-## License
-MIT
