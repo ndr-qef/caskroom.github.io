@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /* HTML5 History API normalization */
 
   var initialUrl = location.href,
+      queryURL = window.location.search,
       historyCanary = false;
 
   window.addEventListener("popstate", function() {
@@ -15,6 +16,17 @@ document.addEventListener("DOMContentLoaded", function() {
       $("#search-page").toggleClass("off-canvas");
     }
   });
+
+  var searchFromURL = function searchFromURL(queryURL) {
+    var matchQueryOnly = /^\?q=(.+)/,
+        decoded = decodeURIComponent(queryURL.replace(/\+/g, " ")),
+        query = matchQueryOnly.exec(decoded)[1];
+
+    $("#search-input").val(query);
+    toggleSearchPage();
+    renderResults(query);
+  }
+
 
   /* Cask data */
 
@@ -37,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     process(data);
+    if (queryURL) searchFromURL(queryURL);
   }
 
   var request = function request(url, handler) {
@@ -83,6 +96,31 @@ document.addEventListener("DOMContentLoaded", function() {
     return results;
   }
 
+  var renderResults = function renderResults(q) {
+    var results = search(q);
+
+    $("#search-view").html(render(results));
+  }
+
+  /* Search Page*/
+
+  var toggleSearchPage = function toggleSearchPage() {
+    history.pushState(null, null, null);
+    historyCanary = true;
+
+    $("html, body").animate({ scrollTop: 0 }, 250).promise().done(function() {
+      $("#landing-page").toggleClass("off-canvas");
+      $("#search-page").toggleClass("off-canvas");
+    });
+  }
+
+  $("#search-button").on("click", function(e) {
+    toggleSearchPage();
+
+    $("#search-input").focus();
+    e.preventDefault();
+  });
+
   var debounce = function debounce(fn) {
     var timeout;
 
@@ -97,28 +135,11 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   };
 
-  $("#search-button").on("click", function(e) {
-    history.pushState(null, null, "/search");
-    historyCanary = true;
-
-    $("html, body").animate({ scrollTop: 0 }, 250).promise().done(function() {
-      $("#landing-page").toggleClass("off-canvas");
-      $("#search-page").toggleClass("off-canvas");
-    });
-
-    $("#search-input").focus();
-    e.preventDefault();
-  });
-
   $("#search-input").on("keyup", debounce(function() {
     var fieldedQuery = $(this).val()
 
     if (fieldedQuery < 1) $("#search-view").html(doT.template(promptSearchTemplate));
-    else {
-      var results = search(fieldedQuery);
-
-      $("#search-view").html(render(results));
-    }
+    else renderResults(fieldedQuery)
   }));
 
   $("#search-input").on("keyup keypress", function(e) {
