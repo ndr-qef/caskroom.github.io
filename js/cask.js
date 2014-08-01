@@ -43,12 +43,21 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  var commitHandler = function commitHandler(data) {
+    var latestTree = "https://api.github.com/repos/caskroom/homebrew-cask/git/trees/"
+                   + data[0].sha
+                   + "?recursive=1";
+
+    request(latestTree, caskHandler);
+  }
+
   var caskHandler = function caskHandler(data) {
+    caskList = process(data);
+
     $("#" + caskSpanId).fadeOut(250, function() {
-      $(this).text(data.length.toString()).fadeIn(250);
+      $(this).text(caskList.length.toString()).fadeIn(250);
     });
 
-    process(data);
     if (queryURL) searchFromURL(queryURL);
   }
 
@@ -62,23 +71,34 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  request("https://api.github.com/repos/caskroom/homebrew-cask/contents/Casks", caskHandler);
+  request("https://api.github.com/repos/caskroom/homebrew-cask/commits?per_page=1", commitHandler);
   request("https://api.github.com/repos/caskroom/homebrew-cask/contributors?per_page=1", contribHandler);
+
 
   /* Search */
 
   var process = function process(data) {
-    caskList = data.map(function(res, i) {
-      var raw = res.name.substr(0, res.name.lastIndexOf(".")) || res.name;
+    var isCaskFile = function(el) {
+      var r = /^Casks\/.+\.rb/;
+
+      return r.test(el.path);
+    };
+    var toEntry = function(el, i) {
+      var r = /^Casks\/(.+).rb/,
+          caskFileName = r.exec(el.path)[1];
 
       return {
         id: i,
-        caskName: raw,
-        appName: raw.replace(/-/g, " "),
-        entryName: raw.replace(/[^A-Za-z0-9]/g, ""),
-        caskUrl: res.html_url
+        caskName: caskFileName,
+        appName: caskFileName.replace(/-/g, " "),
+        entryName: caskFileName.replace(/[^A-Za-z0-9]/g, ""),
+        caskUrl: el.url
       };
-    });
+    };
+
+    var casks = data.tree.filter(isCaskFile).map(toEntry);
+
+    return casks;
   };
 
   var searchTemplate = $("#search-template").html(),
