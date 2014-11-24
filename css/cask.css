@@ -134,6 +134,10 @@ code {
   text-align: left;
 }
 
+pre > code::before, .sh > code::before {
+  content: '$ ';
+}
+
 .title-wrap > a {
   text-decoration: none;
 }
