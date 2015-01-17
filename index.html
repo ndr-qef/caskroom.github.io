@@ -101,19 +101,7 @@
                 <a href="//github.com/caskroom/homebrew-cask" class="github">
                     <img src="assets/octocat.svg" class="octocat" alt="Octocat purrs and points its tentacles to the source">
                 </a>
-                <a href="/search" id="search-button" class="textual">search</a>
-            </div>
-        </div>
-        
-        <div id="search-page" class="off-canvas">
-            <form class="search-bar column-main spacing">
-                <input type = "text" id = "search-input" placeholder = "search" autocomplete = "off" class = "delta highlight-bg">
-            </form>
-        
-            <div id="search-view" class="column-main">
-                <div class="search-item no-basis delta ale highlight-bg">
-                    Type to start searching.
-                </div>
+                <a href="/search.html" id="search-button" class="textual">search</a>
             </div>
         </div>
     </div>
@@ -125,29 +113,6 @@
             Website courtesy of <a href="https://github.com/ndr-qef">@ndr-qef</a>.
         </div>
     </footer>
-    
-    
-    <script id="search-template" type="text/x-dot-template">
-        {{? it.length}}
-            {{~ it :item}}
-                <div class="search-item delta ale highlight-bg">
-                    {{=item.appName}}
-                    <div class="command">
-                      <div class="sh">
-                          <code>brew cask install {{=item.caskName}}</code>
-                      </div>
-                    </div>
-                </div>
-            {{~}}
-        {{??}}
-            <div class="search-item no-basis delta highlight-bg">
-                No Cask found. Why not <a href="https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md">contribute one</a>?
-            </div>
-        {{?}}
-    </script>
-    <script id="prompt-search-template" type="text/x-dot-template">
-        <div class="search-item no-basis delta ale highlight-bg">Type to start searching.</div>
-    </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="js/doT.min.js"></script>
